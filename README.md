@@ -28,10 +28,15 @@ https://github.com/Mohamedtb0221/flask-dashboard-app.git`
 6 Access the app at: http://127.0.0.1:5000/  
 
 ## Preview
-
-![Dashboard Home](Bureau\cptr1.png)
-![Student Table](screenshots/student_table.png)
-![Analytics Chart](screenshots/analytics_chart.png)
+  
+### Dashboard Home
+![Dashboard Home](Screenshots/cptr1.png)
+### Some Dashboard Charts
+![Some Dashboard Charts](Screenshots/cptr2.png)
+### Students Table  
+![Students Table](Screenshots/cptr3.png)
+### Analytics Page
+![Analytics Page](Screenshots/cptr4.png)
 
 
 ## Author
