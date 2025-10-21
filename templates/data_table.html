@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+  </head>
+
+  <body class="dataBody">
+    <nav class="close">
+      <div class="logo-name">
+        <div class="logo-image">
+          <img src="/static/cropped-logo_usthb.png" alt="" />
+        </div>
+
+        <span class="logo_name">Pravan</span>
+      </div>
+
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="{{ url_for('index') }}">
+              <i class="uil uil-estate"></i>
+              <span class="link-name">Dahsboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('index1') }}">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name">Content</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('index2') }}">
+              <i class="uil uil-chart"></i>
+              <span class="link-name">Analytics</span>
+            </a>
+          </li>
+          
+        </ul>
+
+        
+      </div>
+    </nav>
+    <section class="dashtable">
+      <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+        <div class="search-box">
+          <i class="uil uil-redo"></i>
+          <input type="button" value="Refresh..." onclick="loadData()" />
+        </div>
+
+        <!--<img src="images/profile.jpg" alt="">-->
+      </div>
+      <button class="btn_ajout" id="login-show">Add Student</button>
+      <div id="login-modal">
+        <div class="modal">
+          <div class="top-form">
+            <div class="close-modal">&#10006;</div>
+          </div>
+          <div class="login-form">
+            <h2>Add new student</h2>
+              <div class="form">
+                <input
+                  class="form-control"
+                  id="matricule"
+                  type="number"
+                  placeholder="Matricul"
+                  name="valMatricule"
+                  required
+                />
+                <div id="nompren">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Name"
+                    name="valNom"
+                    id="nom"
+                    required
+                  />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Surname"
+                    name="valPrenom"
+                    id="prenom"
+                    required
+                  />
+                  <select id="gender" name="valSexe">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
+                <div id="nompren">
+                  <select id="majorr" name="valSpecialite">
+                    <option value="SPECIALITE_1">SPECIALITE_1</option>
+                    <option value="SPECIALITE_2">SPECIALITE_2</option>
+                    <option value="SPECIALITE_3">SPECIALITE_3</option>
+                    <option value="SPECIALITE_4">SPECIALITE_4</option>
+                    <option value="SPECIALITE_5">SPECIALITE_5</option>
+                    <option value="SPECIALITE_6">SPECIALITE_6</option>
+                    <option value="SPECIALITE_7">SPECIALITE_7</option>
+                  </select>
+                  <input
+                    class="form-control"
+                    name="valMoyenne"
+                    type="text"
+                    placeholder="Score"
+                    id="moyenne"
+                    required
+                  />
+                  <select id="yearr" name="valAnnee">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                  </select>
+                </div>
+
+                <button
+                  onclick="add_student()"
+                  class="submit-btn"
+                >
+                  Add
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!--     -->
+
+      <div id="login-modal1">
+        <div class="modal">
+          <div class="top-form">
+            <div class="close-modal1">&#10006;</div>
+          </div>
+          <div class="login-form">
+            <h2>Edit student</h2>
+              <div class="form">
+                <input
+                  class="form-control"
+                  id="matricule1"
+                  type="number"
+                  placeholder="Matricul"
+                  name="valMatricule1"
+                  required
+                />
+                <div id="nompren">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Name"
+                    name="valNom1"
+                    id="nom1"
+                    required
+                  />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Surname"
+                    name="valPrenom1"
+                    id="prenom1"
+                    required
+                  />
+                  <select id="gender1" name="valSexe1">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
+                <div id="nompren">
+                  <select id="majorr1" name="valSpecialite1">
+                    <option value="SPECIALITE_1">SPECIALITE_1</option>
+                    <option value="SPECIALITE_2">SPECIALITE_2</option>
+                    <option value="SPECIALITE_3">SPECIALITE_3</option>
+                    <option value="SPECIALITE_4">SPECIALITE_4</option>
+                    <option value="SPECIALITE_5">SPECIALITE_5</option>
+                    <option value="SPECIALITE_6">SPECIALITE_6</option>
+                    <option value="SPECIALITE_7">SPECIALITE_7</option>
+                  </select>
+                  <input
+                    class="form-control"
+                    name="valMoyenne1"
+                    type="text"
+                    placeholder="Score"
+                    id="moyenne1"
+                    required
+                  />
+                  <select id="yearr1" name="valAnnee1">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                  </select>
+                </div>
+
+                <button
+                  onclick="edit_student()"
+                  class="submit-btn"
+                >
+                  Save
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="table" id="customers_table">
+        <section class="table__header">
+          <h1>Univerisy's students</h1>
+          <label>
+            <select id="year">
+              <option value="annee">Any</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+            </select>
+          </label>
+          <label>
+            <select id="major">
+              <option value="specialite">Any</option>
+              <option value="SPECIALITE_1">SPECIALITE_1</option>
+              <option value="SPECIALITE_2">SPECIALITE_2</option>
+              <option value="SPECIALITE_3">SPECIALITE_3</option>
+              <option value="SPECIALITE_4">SPECIALITE_4</option>
+              <option value="SPECIALITE_5">SPECIALITE_5</option>
+              <option value="SPECIALITE_6">SPECIALITE_6</option>
+              <option value="SPECIALITE_7">SPECIALITE_7</option>
+            </select>
+          </label>
+          <div class="input-group">
+            <input type="search" placeholder="Search Data..." />
+            <img src="/static/search.png" alt="" />
+          </div>
+        </section>
+
+        <section class="table__body">
+          <table>
+            <thead>
+              <tr>
+                <th>Matricul <span class="icon-arrow">&UpArrow;</span></th>
+                <th>Student <span class="icon-arrow">&UpArrow;</span></th>
+                <th>Gender <span class="icon-arrow">&UpArrow;</span></th>
+                <th>Major <span class="icon-arrow">&UpArrow;</span></th>
+                <th>Score <span class="icon-arrow">&UpArrow;</span></th>
+                <th>year <span class="icon-arrow">&UpArrow;</span></th>
+                <th>Action </th>
+
+              </tr>
+            </thead>
+            <tbody id="mybody">
+              
+              <tr>
+                
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </section>
+    
+    <script src="{{url_for('static', filename='data_script.js')}}"></script>
+  </body>
+</html>

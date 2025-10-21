@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+
+    <!----===== Iconscout CSS ===== -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <title>Admin Dashboard Panel</title>
+  </head>
+  <body>
+    <nav class="close">
+      <div class="logo-name">
+        <div class="logo-image">
+          <img src="/static/cropped-logo_usthb.png" alt="" />
+        </div>
+
+        <span class="logo_name">Pravan</span>
+      </div>
+
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="{{ url_for('index') }}">
+              <i class="uil uil-estate"></i>
+              <span class="link-name">Dahsboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('index1') }}">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name">Content</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('index2') }}">
+              <i class="uil uil-chart"></i>
+              <span class="link-name">Analytics</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="dashboard">
+      <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+          <i class="uil uil-redo"></i>
+          <input type="button" value="Refresh..." onclick="loadData()" />
+        </div>
+
+        <!--<img src="images/profile.jpg" alt="">-->
+      </div>
+
+      <div class="dash-content">
+        <div class="activity">
+          <div class="title">
+            <i class="uil uil-clock-three"></i>
+            <span class="text">Best in major</span>
+            <div class="best_select">
+              <select name="majors_year" id="majors_year">
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="activity-data">
+            <div class="data matricule">
+              <span class="data-title">ID</span>
+              <span class="data-list stud1"> </span>
+              <span class="data-list stud2"> </span>
+              <span class="data-list stud3"> </span>
+              <span class="data-list stud4"> </span>
+              <span class="data-list stud5"> </span>
+              <span class="data-list stud6"> </span>
+              <span class="data-list stud7"> </span>
+            </div>
+            <div class="data names">
+              <span class="data-title">Name</span>
+              <span class="data-list stud1"> </span>
+              <span class="data-list stud2"> </span>
+              <span class="data-list stud3"> </span>
+              <span class="data-list stud4"> </span>
+              <span class="data-list stud5"> </span>
+              <span class="data-list stud6"> </span>
+              <span class="data-list stud7"> </span>
+            </div>
+            <div class="data surnames">
+              <span class="data-title">Surname</span>
+              <span class="data-list stud1"> </span>
+              <span class="data-list stud2"> </span>
+              <span class="data-list stud3"> </span>
+              <span class="data-list stud4"> </span>
+              <span class="data-list stud5"> </span>
+              <span class="data-list stud6"> </span>
+              <span class="data-list stud7"> </span>
+            </div>
+            <div class="data majors">
+              <span class="data-title">Major</span>
+              <span class="data-list stud1"> </span>
+              <span class="data-list stud2"> </span>
+              <span class="data-list stud3"> </span>
+              <span class="data-list stud4"> </span>
+              <span class="data-list stud5"> </span>
+              <span class="data-list stud6"> </span>
+              <span class="data-list stud7"> </span>
+            </div>
+            <div class="data scores">
+              <span class="data-title">Score</span>
+              <span class="data-list stud1"> </span>
+              <span class="data-list stud2"> </span>
+              <span class="data-list stud3"> </span>
+              <span class="data-list stud4"> </span>
+              <span class="data-list stud5"></span>
+              <span class="data-list stud6"> </span>
+              <span class="data-list stud7"> </span>
+            </div>
+            <div class="data observations">
+              <span class="data-title">Observation</span>
+              <span class="data-list stud1"></span>
+              <span class="data-list stud2"></span>
+              <span class="data-list stud3"></span>
+              <span class="data-list stud4"></span>
+              <span class="data-list stud5"></span>
+              <span class="data-list stud6"></span>
+              <span class="data-list stud7"></span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="title">
+            <i class="uil uil-clock-three"></i>
+            <span class="text">Best in year</span>
+          </div>
+
+          <div class="activity-data">
+            <div class="data matricule">
+              <span class="data-title">ID</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data names">
+              <span class="data-title">Name</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data surnames">
+              <span class="data-title">Surname</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data majors">
+              <span class="data-title">Major</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data years">
+              <span class="data-title">Year</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data scores">
+              <span class="data-title">Score</span>
+              <span class="data-list stud8"> </span>
+              <span class="data-list stud9"> </span>
+              <span class="data-list stud10"> </span>
+            </div>
+            <div class="data observations">
+              <span class="data-title">Observation</span>
+              <span class="data-list stud8"></span>
+              <span class="data-list stud9"></span>
+              <span class="data-list stud10"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+    </section>
+
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>
